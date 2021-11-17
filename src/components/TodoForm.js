@@ -9,11 +9,11 @@ function TodoForm(props) {
     inputRef.current.focus();
   });
 
-  const handleChange = e => {
+  const change = e => {
     setInput(e.target.value);
   };
 
-  const handleSubmit = e => {
+  const submit = e => {
     e.preventDefault();
 
     props.onSubmit({
@@ -24,33 +24,33 @@ function TodoForm(props) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className='todo-form'>
+    <form onSubmit={submit} className='todo-form'>
       {props.edit ? (
         <>
           <input
             placeholder='Update your item'
             value={input}
-            onChange={handleChange}
+            onChange={change}
             name='text'
             ref={inputRef}
             className='todo-input edit'
           />
-          <button onClick={handleSubmit} className='todo-button edit'>
+          <button onClick={submit} className='todo-button edit'>
             Update
           </button>
         </>
       ) : (
         <>
           <input
-            placeholder='Add a todo'
+            placeholder='Hey dude, What is new?'
             value={input}
-            onChange={handleChange}
+            onChange={change}
             name='text'
             className='todo-input'
             ref={inputRef}
           />
-          <button onClick={handleSubmit} className='todo-button'>
-            Add todo
+          <button onClick={submit} className='todo-button'>
+            Add to your list
           </button>
         </>
       )}
